@@ -1,3 +1,5 @@
+![SimplePaint](Resources/move.png)
+
 # SimplePaint
 
 ![GitHub contributors](https://img.shields.io/github/contributors/TienNHM/SimplePaint) ![GitHub issues](https://img.shields.io/github/issues/TienNHM/SimplePaint?color=red) ![GitHub top language](https://img.shields.io/github/languages/top/TienNHM/SimplePaint?color=cyan) ![GitHub repo size](https://img.shields.io/github/repo-size/TienNHM/SimplePaint) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/TienNHM/SimplePaint) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/TienNHM/SimplePaint?color=g) ![GitHub last commit](https://img.shields.io/github/last-commit/TienNHM/SimplePaint?color=yellow) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/TienNHM/SimplePaint)
