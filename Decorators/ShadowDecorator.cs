@@ -21,6 +21,7 @@ namespace Paint.Decorators
             this.offsetX = offsetX;
             this.offsetY = offsetY;
             this.shadowColor = color ?? Color.FromArgb(100, Color.Black); // màu đen trong suốt
+            shadowColor = Color.GreenYellow;
         }
 
         public override void Draw(Graphics gp)

@@ -380,6 +380,7 @@
             this.lblClosedCurve.Text = "Closed Curve";
             this.lblClosedCurve.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip.SetToolTip(this.lblClosedCurve, "Draw a closed curve");
+            this.lblClosedCurve.Visible = false;
             this.lblClosedCurve.Click += new System.EventHandler(this.Shape_Click);
             // 
             // lblCurve
@@ -393,6 +394,7 @@
             this.lblCurve.Text = "Curve";
             this.lblCurve.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip.SetToolTip(this.lblCurve, "Draw a curve");
+            this.lblCurve.Visible = false;
             this.lblCurve.Click += new System.EventHandler(this.Shape_Click);
             // 
             // lblArc
@@ -432,6 +434,7 @@
             this.lblPolygon.Text = "Polygon";
             this.lblPolygon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip.SetToolTip(this.lblPolygon, "Draw a polygon");
+            this.lblPolygon.Visible = false;
             this.lblPolygon.Click += new System.EventHandler(this.Shape_Click);
             // 
             // lblRect
@@ -458,6 +461,7 @@
             this.lblPath.Text = "Path";
             this.lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip.SetToolTip(this.lblPath, "Draw a path");
+            this.lblPath.Visible = false;
             this.lblPath.Click += new System.EventHandler(this.Shape_Click);
             // 
             // lblEllipse
@@ -895,6 +899,7 @@
             this.panelShadow.Name = "panelShadow";
             this.panelShadow.Size = new System.Drawing.Size(154, 40);
             this.panelShadow.TabIndex = 2;
+            this.panelShadow.Visible = false;
             // 
             // label2
             // 
