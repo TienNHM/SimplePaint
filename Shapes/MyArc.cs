@@ -3,7 +3,7 @@ using System.Drawing.Drawing2D;
 
 namespace Paint.Shapes
 {
-    public class MyArc : MyShapes
+    public class MyArc : ShapeComponent
     {
 
         #region Properties

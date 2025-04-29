@@ -53,9 +53,6 @@
     <ManifestCertificateThumbprint>88A75B92852CDB26F817533F062CEFB003391A55</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Paint_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
@@ -75,6 +72,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorators\BorderDecorator.cs" />
+    <Compile Include="Decorators\FillColorDecorator.cs" />
+    <Compile Include="Decorators\OpacityDecorator.cs" />
+    <Compile Include="Decorators\ShadowDecorator.cs" />
+    <Compile Include="Decorators\ShapeDecorator.cs" />
     <Compile Include="ENUMS\ACTION.cs" />
     <Compile Include="Shapes\MyPath.cs" />
     <Compile Include="FrmMain.cs">
@@ -91,7 +93,7 @@
     <Compile Include="Shapes\MyLine.cs" />
     <Compile Include="Shapes\MyPolygon.cs" />
     <Compile Include="Shapes\MyRectangle.cs" />
-    <Compile Include="Shapes\MyShapes.cs" />
+    <Compile Include="Shapes\ShapeComponent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ENUMS\SHAPES.cs" />
@@ -109,7 +111,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram.cd" />
-    <None Include="Paint_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -5,9 +5,9 @@ using System.Drawing.Drawing2D;
 
 namespace Paint.Shapes
 {
-    public class Group : MyShapes
+    public class Group : ShapeComponent
     {
-        public List<MyShapes> shapesInGroup = new List<MyShapes>();
+        public List<ShapeComponent> shapesInGroup = new List<ShapeComponent>();
 
         /// <summary>
         /// Dùng để xác định hình chữ nhật bao quanh đối tượng shape 
@@ -15,7 +15,7 @@ namespace Paint.Shapes
         public Rectangle RectShape { get; set; }
         public int Count => shapesInGroup.Count;
 
-        public Group(List<MyShapes> DrawObj)
+        public Group(List<ShapeComponent> DrawObj)
         {
             Pen = new Pen(Color.Black);
             for (int i = 0; i < DrawObj.Count;)
@@ -30,7 +30,7 @@ namespace Paint.Shapes
             this.IsSelected = true;
         }
 
-        public void Add(MyShapes shape)
+        public void Add(ShapeComponent shape)
         {
             shapesInGroup.Add(shape);
         }
@@ -79,7 +79,7 @@ namespace Paint.Shapes
             int minX = Int32.MaxValue, maxX = Int32.MinValue, minY = Int32.MaxValue, maxY = Int32.MinValue;
             for (int i = 0; i < shapesInGroup.Count; i++)
             {
-                MyShapes shape = shapesInGroup[i] as MyShapes;
+                ShapeComponent shape = shapesInGroup[i] as ShapeComponent;
                 if (shape is MyCurve curve)
                 {
                     FindCurveRegion(curve);

@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Paint.Shapes
 {
-    public class MyPolygon : MyShapes
+    public class MyPolygon : ShapeComponent
     {
         private List<Point> lPoints;
         private int selectedPoint;

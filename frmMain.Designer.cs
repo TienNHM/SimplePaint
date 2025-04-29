@@ -85,6 +85,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelDecorator = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbPenWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTextFill)).BeginInit();
@@ -105,6 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbStartAngle)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlPaint
@@ -115,7 +118,7 @@
             this.pnlPaint.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.pnlPaint.Location = new System.Drawing.Point(169, 3);
             this.pnlPaint.Name = "pnlPaint";
-            this.pnlPaint.Size = new System.Drawing.Size(1218, 696);
+            this.pnlPaint.Size = new System.Drawing.Size(1218, 829);
             this.pnlPaint.TabIndex = 2;
             this.pnlPaint.DoubleClick += new System.EventHandler(this.PnlPaint_DoubleClick);
             this.pnlPaint.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlPaint_MouseDown);
@@ -296,7 +299,7 @@
             // btnBrowse
             // 
             this.btnBrowse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBrowse.Location = new System.Drawing.Point(0, 120);
+            this.btnBrowse.Location = new System.Drawing.Point(0, 74);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(154, 23);
             this.btnBrowse.TabIndex = 50;
@@ -338,7 +341,7 @@
             this.picTextFill.Dock = System.Windows.Forms.DockStyle.Top;
             this.picTextFill.Location = new System.Drawing.Point(0, 20);
             this.picTextFill.Name = "picTextFill";
-            this.picTextFill.Size = new System.Drawing.Size(154, 100);
+            this.picTextFill.Size = new System.Drawing.Size(154, 54);
             this.picTextFill.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picTextFill.TabIndex = 0;
             this.picTextFill.TabStop = false;
@@ -474,7 +477,7 @@
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContainer.Location = new System.Drawing.Point(3, 3);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(160, 696);
+            this.pnlContainer.Size = new System.Drawing.Size(160, 829);
             this.pnlContainer.TabIndex = 3;
             // 
             // tableLayoutPanel2
@@ -482,6 +485,7 @@
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 8);
             this.tableLayoutPanel2.Controls.Add(this.pnlLinearAngle, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.pnlTextFill, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.pnlHatchFill, 0, 5);
@@ -493,7 +497,7 @@
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 125);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 9;
+            this.tableLayoutPanel2.RowCount = 10;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -502,9 +506,9 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(160, 571);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(160, 704);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // pnlLinearAngle
@@ -513,9 +517,9 @@
             this.pnlLinearAngle.Controls.Add(this.trbLinearAngle);
             this.pnlLinearAngle.Controls.Add(this.lblLinearAngle);
             this.pnlLinearAngle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlLinearAngle.Location = new System.Drawing.Point(3, 520);
+            this.pnlLinearAngle.Location = new System.Drawing.Point(3, 374);
             this.pnlLinearAngle.Name = "pnlLinearAngle";
-            this.pnlLinearAngle.Size = new System.Drawing.Size(154, 48);
+            this.pnlLinearAngle.Size = new System.Drawing.Size(154, 52);
             this.pnlLinearAngle.TabIndex = 0;
             this.pnlLinearAngle.Visible = false;
             // 
@@ -523,7 +527,7 @@
             // 
             this.trbLinearAngle.AutoSize = false;
             this.trbLinearAngle.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.trbLinearAngle.Location = new System.Drawing.Point(0, 16);
+            this.trbLinearAngle.Location = new System.Drawing.Point(0, 20);
             this.trbLinearAngle.Maximum = 180;
             this.trbLinearAngle.Name = "trbLinearAngle";
             this.trbLinearAngle.Size = new System.Drawing.Size(154, 32);
@@ -550,7 +554,7 @@
             this.pnlTextFill.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTextFill.Location = new System.Drawing.Point(3, 271);
             this.pnlTextFill.Name = "pnlTextFill";
-            this.pnlTextFill.Size = new System.Drawing.Size(154, 143);
+            this.pnlTextFill.Size = new System.Drawing.Size(154, 97);
             this.pnlTextFill.TabIndex = 0;
             this.pnlTextFill.Visible = false;
             // 
@@ -730,7 +734,7 @@
             this.tbArcAngle.Controls.Add(this.lblSweepAngle, 0, 2);
             this.tbArcAngle.Controls.Add(this.trbStartAngle, 0, 1);
             this.tbArcAngle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbArcAngle.Location = new System.Drawing.Point(3, 420);
+            this.tbArcAngle.Location = new System.Drawing.Point(3, 432);
             this.tbArcAngle.Name = "tbArcAngle";
             this.tbArcAngle.RowCount = 4;
             this.tbArcAngle.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -839,14 +843,36 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1218, 702);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1218, 835);
             this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.labelDecorator);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 532);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(154, 20);
+            this.panel1.TabIndex = 3;
+            this.panel1.Visible = false;
+            // 
+            // labelDecorator
+            // 
+            this.labelDecorator.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelDecorator.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.labelDecorator.Location = new System.Drawing.Point(0, 0);
+            this.labelDecorator.Name = "labelDecorator";
+            this.labelDecorator.Size = new System.Drawing.Size(154, 20);
+            this.labelDecorator.TabIndex = 0;
+            this.labelDecorator.Text = "Decorator";
+            this.labelDecorator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1218, 726);
+            this.ClientSize = new System.Drawing.Size(1218, 859);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.pnlMenu);
             this.DoubleBuffered = true;
@@ -885,6 +911,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbStartAngle)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -946,6 +973,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label lblBorderColor;
         private System.Windows.Forms.CheckBox ckbBorder;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelDecorator;
     }
 }
 

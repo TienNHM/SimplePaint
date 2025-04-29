@@ -2,7 +2,7 @@
 
 namespace Paint.Shapes
 {
-    public class MyEllipse : MyShapes
+    public class MyEllipse : ShapeComponent
     {
         /// <summary>
         /// Dùng để xác định hình chữ nhật bao quanh đối tượng shape 

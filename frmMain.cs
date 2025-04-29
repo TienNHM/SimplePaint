@@ -32,12 +32,12 @@ namespace Paint
         /// <summary>
         /// Chứa hình dạng đang được chọn 
         /// </summary>
-        private MyShapes SelectedShape { get; set; }
+        private ShapeComponent SelectedShape { get; set; }
 
         /// <summary>
         /// Chứa danh sách các đối tượng đang được vẽ 
         /// </summary>
-        private List<MyShapes> DrawObj { get; set; } = new List<MyShapes>();
+        private List<ShapeComponent> DrawObj { get; set; } = new List<ShapeComponent>();
 
         /// <summary>
         /// Chứa các Label các hình trong menu Shape, dùng để phục vụ cho việc chọn Shape từ menu để vẽ  
@@ -573,7 +573,7 @@ namespace Paint
             DrawObj.ForEach(shape => shape.IsSelected = false);
         }
 
-        private MyShapes SelectShape(Point p)
+        private ShapeComponent SelectShape(Point p)
         {
             int index = -1;
             for (int i = 0; i < DrawObj.Count; i++)
@@ -637,7 +637,7 @@ namespace Paint
             //Nếu nhấn phím CTRL, sẽ chọn đồng thời nhiều shape. Nếu hình đã chọn mà chọn lần 2, sẽ thành bỏ chọn
             if (IsCTRL_pressed)
             {
-                DrawObj.ForEach((Action<MyShapes>)(shape =>
+                DrawObj.ForEach((Action<ShapeComponent>)(shape =>
                 {
                     if (shape.Select(eLocation))
                         shape.IsSelected = !shape.IsSelected;
@@ -797,7 +797,7 @@ namespace Paint
                 {
                     IsDrawRegion = false;                    //Dung de xoa vung rectangle region
                     DrawObj.ForEach(shape => shape.IsSelected = false);
-                    DrawObj.ForEach((Action<MyShapes>)(shape =>
+                    DrawObj.ForEach((Action<ShapeComponent>)(shape =>
                     {
                         if (shape.P1.X >= SelectedRegion.X
                         && shape.P2.X <= SelectedRegion.X + SelectedRegion.Width

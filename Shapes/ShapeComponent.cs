@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 
 namespace Paint.Shapes
 {
-    public abstract class MyShapes
+    public abstract class ShapeComponent
     {
         #region Properties
         public Pen Pen { get; set; }
@@ -39,12 +39,12 @@ namespace Paint.Shapes
         #endregion
 
         #region Constructors
-        public MyShapes()
+        public ShapeComponent()
         {
 
         }
 
-        public MyShapes(Pen myPen, Brush myBrush)
+        public ShapeComponent(Pen myPen, Brush myBrush)
         {
             this.Pen = myPen;
             this.Brush = myBrush;

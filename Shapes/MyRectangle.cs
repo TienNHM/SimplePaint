@@ -2,7 +2,7 @@
 
 namespace Paint.Shapes
 {
-    public class MyRectangle : MyShapes
+    public class MyRectangle : ShapeComponent
     {
         /// <summary>
         /// Dùng để xác định hình chữ nhật bao quanh đối tượng shape 

@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Paint.Shapes
 {
-    public class MyPath : MyShapes
+    public class MyPath : ShapeComponent
     {
         public List<Point> LPoints;
         protected int selectedPoint;

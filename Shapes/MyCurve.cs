@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Paint.Shapes
 {
-    public class MyCurve : MyShapes
+    public class MyCurve : ShapeComponent
     {
         protected int selectedPoint;
         public MyCurve(Pen myPen, Brush myBrush) : base(myPen, myBrush)
