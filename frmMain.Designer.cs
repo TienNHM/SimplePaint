@@ -85,8 +85,12 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelShadowDecorator = new System.Windows.Forms.Panel();
             this.labelDecorator = new System.Windows.Forms.Label();
+            this.chkShadow = new System.Windows.Forms.CheckBox();
+            this.panelShadow = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelShadowColor = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbPenWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTextFill)).BeginInit();
@@ -107,7 +111,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbStartAngle)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelShadowDecorator.SuspendLayout();
+            this.panelShadow.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlPaint
@@ -354,7 +359,6 @@
             this.ckbBorder.Checked = true;
             this.ckbBorder.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckbBorder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ckbBorder.Enabled = false;
             this.ckbBorder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.ckbBorder.Location = new System.Drawing.Point(3, 3);
             this.ckbBorder.Name = "ckbBorder";
@@ -485,7 +489,7 @@
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 8);
+            this.tableLayoutPanel2.Controls.Add(this.panelShadowDecorator, 0, 8);
             this.tableLayoutPanel2.Controls.Add(this.pnlLinearAngle, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.pnlTextFill, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.pnlHatchFill, 0, 5);
@@ -497,7 +501,7 @@
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 125);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 10;
+            this.tableLayoutPanel2.RowCount = 11;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -508,6 +512,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(160, 704);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
@@ -846,16 +851,17 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1218, 835);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
-            // panel1
+            // panelShadowDecorator
             // 
-            this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.labelDecorator);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 532);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(154, 20);
-            this.panel1.TabIndex = 3;
-            this.panel1.Visible = false;
+            this.panelShadowDecorator.AutoSize = true;
+            this.panelShadowDecorator.Controls.Add(this.panelShadow);
+            this.panelShadowDecorator.Controls.Add(this.chkShadow);
+            this.panelShadowDecorator.Controls.Add(this.labelDecorator);
+            this.panelShadowDecorator.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelShadowDecorator.Location = new System.Drawing.Point(3, 532);
+            this.panelShadowDecorator.Name = "panelShadowDecorator";
+            this.panelShadowDecorator.Size = new System.Drawing.Size(154, 77);
+            this.panelShadowDecorator.TabIndex = 3;
             // 
             // labelDecorator
             // 
@@ -865,8 +871,54 @@
             this.labelDecorator.Name = "labelDecorator";
             this.labelDecorator.Size = new System.Drawing.Size(154, 20);
             this.labelDecorator.TabIndex = 0;
-            this.labelDecorator.Text = "Decorator";
+            this.labelDecorator.Text = "Shadow Decorator";
             this.labelDecorator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // chkShadow
+            // 
+            this.chkShadow.AutoSize = true;
+            this.chkShadow.Dock = System.Windows.Forms.DockStyle.Top;
+            this.chkShadow.Location = new System.Drawing.Point(0, 20);
+            this.chkShadow.Name = "chkShadow";
+            this.chkShadow.Size = new System.Drawing.Size(154, 17);
+            this.chkShadow.TabIndex = 0;
+            this.chkShadow.Text = "Shadow";
+            this.chkShadow.UseVisualStyleBackColor = true;
+            // 
+            // panelShadow
+            // 
+            this.panelShadow.AutoSize = true;
+            this.panelShadow.Controls.Add(this.label2);
+            this.panelShadow.Controls.Add(this.labelShadowColor);
+            this.panelShadow.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelShadow.Location = new System.Drawing.Point(0, 37);
+            this.panelShadow.Name = "panelShadow";
+            this.panelShadow.Size = new System.Drawing.Size(154, 40);
+            this.panelShadow.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(0, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(154, 24);
+            this.label2.TabIndex = 41;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip.SetToolTip(this.label2, "Choose shadow color");
+            this.label2.Click += new System.EventHandler(this.ChooseColor);
+            // 
+            // labelShadowColor
+            // 
+            this.labelShadowColor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelShadowColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.labelShadowColor.Location = new System.Drawing.Point(0, 0);
+            this.labelShadowColor.Name = "labelShadowColor";
+            this.labelShadowColor.Size = new System.Drawing.Size(154, 16);
+            this.labelShadowColor.TabIndex = 0;
+            this.labelShadowColor.Text = "ShadowColor";
+            this.labelShadowColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmMain
             // 
@@ -911,7 +963,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbStartAngle)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.panelShadowDecorator.ResumeLayout(false);
+            this.panelShadowDecorator.PerformLayout();
+            this.panelShadow.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -973,8 +1027,12 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label lblBorderColor;
         private System.Windows.Forms.CheckBox ckbBorder;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelShadowDecorator;
         private System.Windows.Forms.Label labelDecorator;
+        private System.Windows.Forms.CheckBox chkShadow;
+        private System.Windows.Forms.Panel panelShadow;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelShadowColor;
     }
 }
 

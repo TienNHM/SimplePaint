@@ -1,4 +1,5 @@
-﻿using Paint.Shapes;
+﻿using Paint.Decorators;
+using Paint.Shapes;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -18,6 +19,11 @@ namespace Paint
         /// Dùng để xác định điểm được chọn làm điểm neo hiện tại khi Zoom/Move 
         /// </summary>
         private Point FirstPoint { get; set; }
+
+        /// <summary>
+        /// Dùng để lưu tạm thông tin của hình đang được vẽ
+        /// </summary>
+        private ShapeComponent tempShape = null;
 
         /// <summary>
         /// Được dùng kèm với IsDrawRegion, dùng để xác định một vùng hình chữ nhật trống đang được chọn 
@@ -500,19 +506,78 @@ namespace Paint
             {
                 DashStyle = (DashStyle)cmbDashStyle.SelectedIndex,
             };
+
+            ShapeComponent shape = null;
             switch (MyShape)
             {
-                case SHAPES.LINE: DrawObj.Add(new MyLine(pen, brush)); break;
-                case SHAPES.ELLIPSE: DrawObj.Add(new MyEllipse(pen, brush)); break;
-                case SHAPES.RECTANGLE: DrawObj.Add(new MyRectangle(pen, brush)); break;
-                case SHAPES.CURVE: DrawObj.Add(new MyCurve(pen, brush)); break;
-                case SHAPES.CLOSEDCURVE: DrawObj.Add(new MyClosedCurve(pen, brush)); break;
-                case SHAPES.POLYGON: DrawObj.Add(new MyPolygon(pen, brush)); break;
-                case SHAPES.CUSTOM: DrawObj.Add(new MyPath(pen, brush)); break;
-                case SHAPES.ARC: DrawObj.Add(new MyArc(pen, brush, trbStartAngle.Value, trbSweepAngle.Value)); break;
+                case SHAPES.LINE: 
+                    shape = new MyLine(pen, brush); break;
+                case SHAPES.ELLIPSE: 
+                    shape = new MyEllipse(pen, brush); break;
+                case SHAPES.RECTANGLE: 
+                    shape = new MyRectangle(pen, brush); break;
+                case SHAPES.CURVE: 
+                    shape = new MyCurve(pen, brush); break;
+                case SHAPES.CLOSEDCURVE: 
+                    shape = new MyClosedCurve(pen, brush); break;
+                case SHAPES.POLYGON: 
+                    shape = new MyPolygon(pen, brush); break;
+                case SHAPES.CUSTOM:     
+                    shape = new MyPath(pen, brush); break;
+                case SHAPES.ARC: 
+                    shape = new MyArc(pen, brush, trbStartAngle.Value, trbSweepAngle.Value); break;
             }
+
+            if (shape == null) return;
+
+            //// Áp dụng decorator nếu có
+            //if (chkShadow.Checked)
+            //    shape = new ShadowDecorator(shape, 4, 4, labelShadowColor.BackColor);
+
+            shape.IsFilled = this.Fill;
+            shape.IsDrawBorder = ckbBorder.Checked;
+
+            DrawObj.Add(shape);
             DrawObj[DrawObj.Count - 1].IsFilled = this.Fill;
             DrawObj[DrawObj.Count - 1].IsDrawBorder = ckbBorder.Checked;
+        }
+
+        private ShapeComponent CreateRawShape()
+        {
+            Brush brush = CreateBrush();
+            Pen pen = new Pen(color: lblBorderColor.BackColor, width: trbPenWidth.Value)
+            {
+                DashStyle = (DashStyle)cmbDashStyle.SelectedIndex,
+            };
+
+            ShapeComponent shape = null;
+            switch (MyShape)
+            {
+                case SHAPES.LINE:
+                    shape = new MyLine(pen, brush); break;
+                case SHAPES.ELLIPSE:
+                    shape = new MyEllipse(pen, brush); break;
+                case SHAPES.RECTANGLE:
+                    shape = new MyRectangle(pen, brush); break;
+                case SHAPES.CURVE:
+                    shape = new MyCurve(pen, brush); break;
+                case SHAPES.CLOSEDCURVE:
+                    shape = new MyClosedCurve(pen, brush); break;
+                case SHAPES.POLYGON:
+                    shape = new MyPolygon(pen, brush); break;
+                case SHAPES.CUSTOM:
+                    shape = new MyPath(pen, brush); break;
+                case SHAPES.ARC:
+                    shape = new MyArc(pen, brush, trbStartAngle.Value, trbSweepAngle.Value); break;
+            }
+
+            if (shape == null) return null;
+
+
+            shape.IsFilled = this.Fill;
+            shape.IsDrawBorder = ckbBorder.Checked;
+
+            return shape;
         }
 
         /// <summary>
@@ -621,6 +686,10 @@ namespace Paint
             {
                 Gp.Graphics.FillRectangle(brush, 0, 0, pnlPaint.Width, pnlPaint.Height);
                 DrawObj.ForEach(shape => shape.Draw(Gp.Graphics));
+
+                if (tempShape != null)
+                    tempShape.Draw(Gp.Graphics); // vẽ tạm thời khi đang kéo
+
                 if (IsDrawRegion)
                     using (Pen pen = new Pen(Color.Black) { DashStyle = DashStyle.Dash })
                     {
@@ -687,10 +756,16 @@ namespace Paint
                     MouseDown_Select(e.Location);
                     break;
                 case ACTION.DRAW:
-                    AddShape();
-                    DrawObj[DrawObj.Count - 1].P1 = e.Location;
-                    DrawObj[DrawObj.Count - 1].AddPoint(e.Location);
-                    DrawObj[DrawObj.Count - 1].AddPoint(e.Location);
+                    //AddShape();
+                    //DrawObj[DrawObj.Count - 1].P1 = e.Location;
+                    //DrawObj[DrawObj.Count - 1].AddPoint(e.Location);
+                    //DrawObj[DrawObj.Count - 1].AddPoint(e.Location);
+
+                    tempShape = CreateRawShape(); // chưa có decorator
+                    tempShape.P1 = e.Location;
+                    tempShape.AddPoint(e.Location);
+                    tempShape.AddPoint(e.Location);
+
                     CurrentACTION = ACTION.DRAWING;
                     break;
                 case ACTION.DRAWING:
@@ -703,31 +778,34 @@ namespace Paint
         #region PnlPaint_MouseMove
         private void MouseMove_Drawing(Point eLocation)
         {
-            if (DrawObj.Count <= 0) return;
+            if (tempShape == null) return;
+
             //Cập nhật các điểm để vẽ
             //Hình dáng mouse
             pnlPaint.Cursor = Cursors.Cross;
             //Đối với cách hình thông thường
             if (MyShape != SHAPES.CURVE && MyShape != SHAPES.POLYGON && MyShape != SHAPES.CLOSEDCURVE)
-                DrawObj[DrawObj.Count - 1].AddPoint(eLocation);
+            {
+                tempShape.AddPoint(eLocation);
+            }    
             //Đối với Curve và Polygon
             else
             {
                 if (MyShape == SHAPES.CURVE)
                 {
-                    var shape = (DrawObj[DrawObj.Count - 1] as MyCurve);
+                    var shape = (tempShape as MyCurve);
                     int i = shape.LPoints.Count;
                     shape.LPoints[i - 1] = eLocation;
                 }
                 else if (MyShape == SHAPES.POLYGON)
                 {
-                    var shape = (DrawObj[DrawObj.Count - 1] as MyPolygon);
+                    var shape = (tempShape as MyPolygon);
                     int i = shape.LPoints.Count;
                     shape.LPoints[i - 1] = eLocation;
                 }
                 else if (MyShape == SHAPES.CLOSEDCURVE)
                 {
-                    var shape = (DrawObj[DrawObj.Count - 1] as MyClosedCurve);
+                    var shape = (tempShape as MyClosedCurve);
                     int i = shape.LPoints.Count;
                     shape.LPoints[i - 1] = eLocation;
                 }
@@ -784,9 +862,18 @@ namespace Paint
         {
             if (CurrentACTION == ACTION.DRAWING)
             {
-                if (MyShape == SHAPES.CURVE || MyShape == SHAPES.POLYGON || MyShape == SHAPES.CLOSEDCURVE) 
+                if (MyShape == SHAPES.CURVE || MyShape == SHAPES.POLYGON || MyShape == SHAPES.CLOSEDCURVE)
                     return;
-                else CurrentACTION = ACTION.DRAW;
+
+                // Áp dụng decorator nếu cần
+                if (chkShadow.Checked)
+                    tempShape = new ShadowDecorator(tempShape, 10, 10, labelShadowColor.BackColor);
+
+                DrawObj.Add(tempShape);
+                tempShape = null;
+
+                CurrentACTION = ACTION.DRAW;
+                RePaint();
             }
             //Select
             else if (CurrentACTION == ACTION.SELECT)

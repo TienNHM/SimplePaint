@@ -25,11 +25,11 @@ namespace Paint.Decorators
 
         public override void Draw(Graphics gp)
         {
-            if (shape.GPPaths != null)
+            if (shape.GPPaths != null && shape.GPPaths.PointCount > 0)
             {
                 using (Matrix m = new Matrix())
                 {
-                    m.Translate(offsetX, offsetY); // dịch bóng đổ
+                    m.Translate(offsetX, offsetY);
                     GraphicsPath shadowPath = (GraphicsPath)shape.GPPaths.Clone();
                     shadowPath.Transform(m);
 

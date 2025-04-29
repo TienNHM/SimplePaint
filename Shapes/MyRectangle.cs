@@ -17,8 +17,14 @@ namespace Paint.Shapes
         public override void Draw(Graphics gp)
         {
             RectShape = DetectBound();
-            GPPaths.Reset();
+
+            if (GPPaths == null)
+                GPPaths = new System.Drawing.Drawing2D.GraphicsPath();
+            else
+                GPPaths.Reset();
+
             GPPaths.AddRectangle(RectShape);
+
             if (IsFilled)
                 gp.FillRectangle(Brush, RectShape);
             if (IsDrawBorder) gp.DrawRectangle(Pen, RectShape);

@@ -72,9 +72,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Decorators\BorderDecorator.cs" />
-    <Compile Include="Decorators\FillColorDecorator.cs" />
-    <Compile Include="Decorators\OpacityDecorator.cs" />
     <Compile Include="Decorators\ShadowDecorator.cs" />
     <Compile Include="Decorators\ShapeDecorator.cs" />
     <Compile Include="ENUMS\ACTION.cs" />
